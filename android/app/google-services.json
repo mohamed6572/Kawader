@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "882654272400",
+    "project_id": "kawader-fe347",
+    "storage_bucket": "kawader-fe347.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882654272400:android:4bd27527d0c13e8110f115",
+        "android_client_info": {
+          "package_name": "com.example.souq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882654272400-ke0095lumr5h82ipqhd4v8r5rt5rj8lu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.souq",
+            "certificate_hash": "a6a6465123b9f44a938c44e097176b2764b53de3"
+          }
+        },
+        {
+          "client_id": "882654272400-7rvstjof346npmqdk6ed94uf139se84s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNyaSXwOw6xbk0HKmBvnsMxsRahuIgdZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882654272400-7rvstjof346npmqdk6ed94uf139se84s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

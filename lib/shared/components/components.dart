@@ -81,6 +81,51 @@ void navigateToAndFinish(context , widget)=> Navigator.pushAndRemoveUntil(
         (route)=> false
 );
 
+
+
+Widget BuildGridProduct(context) => Padding(
+  padding: const EdgeInsets.all(2.0),
+  child: ClipRRect(
+    borderRadius: BorderRadius.circular(15),
+    child: Container(
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image(
+            image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
+            width: double.infinity,
+            height: 200,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'souq',
+                  maxLines: 2,
+                  textAlign:TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 14, height: 1.3),
+                ),
+                SizedBox(height: 10,),
+                Text(
+                  '100',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign:TextAlign.center,
+                  style: TextStyle(fontSize: 12, color: Colors.blue),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    ),
+  ),
+);
+
 Widget defultButton({
   double width = double.infinity,
   Color Background = Colors.blue,

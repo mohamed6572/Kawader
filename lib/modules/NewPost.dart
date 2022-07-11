@@ -21,8 +21,8 @@ class New_Post_Screan extends StatelessWidget {
         builder: (context , state){
           return Scaffold(
             backgroundColor: Colors.white,
-            appBar: defultAppBar(context: context, title: 'create add', actions: [
-              defultTextButtton(text: 'Post', function: () {
+            appBar: defultAppBar(context: context, title: 'اضافه اعلان', actions: [
+              defultTextButtton(text: 'اضف', function: () {
               }),
             ]),
             body: Padding(
@@ -40,7 +40,7 @@ class New_Post_Screan extends StatelessWidget {
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'create add ...',
+                        hintText: 'اضافه اعلان..',
                         hintStyle:TextStyle(color: Colors.black) ,
                         border: InputBorder.none),
                     controller: textController,
@@ -48,7 +48,7 @@ class New_Post_Screan extends StatelessWidget {
                   SizedBox(height: 20,),
                   TextFormField(
                     decoration: InputDecoration(
-                        hintText: 'price',
+                        hintText: 'السعر',
                         hintStyle:TextStyle(color: Colors.black) ,
                         border: InputBorder.none),
                     controller: textController,
@@ -94,7 +94,7 @@ class New_Post_Screan extends StatelessWidget {
                               SizedBox(
                                 width: 5,
                               ),
-                              Text('add photo')
+                              Text('اضافه صورة')
                             ],
                           ),
                         ),

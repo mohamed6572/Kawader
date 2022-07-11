@@ -1,8 +1,7 @@
+import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:souq/layout/cubit/cubit.dart';
-import 'package:souq/layout/cubit/states.dart';
 import 'package:souq/layout/social_layout.dart';
 import 'package:souq/modules/social_login/social_login_screan.dart';
 import 'package:souq/shared/Bloc_Observer.dart';
@@ -42,7 +41,22 @@ MyApp({required this.StartWidget});
           return  MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      home:  StartWidget,
+      home:   EasySplashScreen(
+        logo:Image(image: AssetImage("assets/images/logo.jpeg")),
+        logoSize: 80,
+        title: Text(
+          "كوادر فور يو",
+          style: TextStyle(
+            fontSize: 18,
+            height: 1.5,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        showLoader: false,
+        navigator: StartWidget,
+        durationInSeconds: 2,
+      ),
     );
 
   }

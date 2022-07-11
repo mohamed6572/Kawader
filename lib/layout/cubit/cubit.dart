@@ -1,8 +1,8 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:souq/layout/cubit/states.dart';
+import 'package:souq/models/slider_model.dart';
 import 'package:souq/models/user_model.dart';
 import 'package:souq/modules/NewPost.dart';
 import 'package:souq/modules/ProductsScrean.dart';
@@ -14,29 +14,31 @@ class SocialCubit extends Cubit<SocialStates> {
 
   static SocialCubit get(context) => BlocProvider.of(context);
 
-  //
-  // List<SocialUserModel> users = [];
-  //
-  // void getAllUsers() {
-  //   if (users.length == 0)
-  //     FirebaseFirestore.instance.collection('users').get().then((value) {
-  //       value.docs.forEach((element) {
-  //         if (element.data()['uId'] != userModel?.uId)
-  //           users.add(SocialUserModel.fromJson(element.data()));
-  //       });
-  //
-  //       emit(SocialgetAllUsersSucsesState());
-  //     }).catchError((error) {
-  //       emit(SocialgetAllUsersErrorState(error.toString()));
-  //     });
-  // }
+  SliderModel? sliderModel;
+List<SliderModel> slider= [];
+  void getSilderImage() {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc('vu34PnN9JmkvlXGkTyg8')
+        .collection('slideradds')
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+          slider.add(SliderModel.fromJson(element.data()));
+      });
+      emit(getSliderImageSucsesState());
+      print('sucsssssssssssssssssssssssssssssssses');
+    })
+        .catchError((e) {
+          emit(getSliderImageErrorState());
+    });
+  }
 
   SocialUserModel? userModel;
+
   void getUserData() {
     emit(SocialgetUserLoadingState());
-
     FirebaseFirestore.instance.collection('users').doc(uId).get().then((value) {
-
       print(value.data());
       userModel = SocialUserModel.fromJson(value.data()!);
       print(userModel?.name);
@@ -53,9 +55,48 @@ class SocialCubit extends Cubit<SocialStates> {
     Social_Settings(),
   ];
   List<String> titles = [
-    'Home',
-    'Post',
-    'Settings',
+    'الرئيسية',
+    'اضافه اعلان',
+    'الاعدادات',
+  ];
+
+  List<Widget> list = [
+    ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Image(
+        image: NetworkImage(
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
+        width: double.infinity,
+        fit: BoxFit.fill,
+      ),
+    ),
+    ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Image(
+        image: NetworkImage(
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
+        width: double.infinity,
+        fit: BoxFit.fill,
+      ),
+    ),
+    ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Image(
+        image: NetworkImage(
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
+        width: double.infinity,
+        fit: BoxFit.fill,
+      ),
+    ),
+    ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Image(
+        image: NetworkImage(
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
+        width: double.infinity,
+        fit: BoxFit.fill,
+      ),
+    ),
   ];
 
   int CurrentIndex = 0;
@@ -67,6 +108,6 @@ class SocialCubit extends Cubit<SocialStates> {
     else {
       CurrentIndex = index;
       emit(SocialChangeBottomNavState());
-    }}
-
+    }
+  }
 }

@@ -6,6 +6,9 @@ class SocialgetUserLoadingState extends SocialStates {}
 
 class SocialgetUserSucsesState extends SocialStates {}
 
+class getSliderImageSucsesState extends SocialStates {}
+class getSliderImageErrorState extends SocialStates {}
+
 class SocialgetUserErrorState extends SocialStates {
   final String error;
 

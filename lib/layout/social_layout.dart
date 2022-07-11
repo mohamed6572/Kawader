@@ -36,11 +36,11 @@ class SocialLayout extends StatelessWidget {
                 cubit.ChangeIndex(index);
               },
               items: [
-                BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),
+                BottomNavigationBarItem(icon: Icon(Icons.home),label: 'الرئيسية'),
 
-                BottomNavigationBarItem(icon: Icon(Icons.upload_file),label: 'add'),
+                BottomNavigationBarItem(icon: Icon(Icons.upload_file),label: 'اضافه اعلان'),
 
-                BottomNavigationBarItem(icon: Icon(Icons.settings),label: 'Settings'),
+                BottomNavigationBarItem(icon: Icon(Icons.settings),label: 'الاعدادات'),
               ],
             ),
           );

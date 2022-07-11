@@ -52,14 +52,14 @@ class SocialLoginScrean extends StatelessWidget {
                           height: 30,
                         ),
                         Text(
-                          'Login'.toUpperCase(),
+                          'تسجيل دحول'.toUpperCase(),
                           style: Theme.of(context)
                               .textTheme
                               .headline4
                               ?.copyWith(color: Colors.black),
                         ),
                         Text(
-                          'login now to browse our hot offers',
+                          'سجل الدخول الان لترى العروض الخاصه بنا',
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1
@@ -103,7 +103,7 @@ class SocialLoginScrean extends StatelessWidget {
                         defultFormField(
                             type: TextInputType.visiblePassword,
                             controller: passwordController,
-                            label: 'Password',
+                            label: 'كلمه السر',
                             suffix: SocialLoginCubit.get(context).suffix,
                             isPassword:
                                 SocialLoginCubit.get(context).isPassword,
@@ -131,7 +131,7 @@ class SocialLoginScrean extends StatelessWidget {
                         BuildCondition(
                           condition: state is! SocialLoginLodingState,
                           builder: (context) => defultButton(
-                            text: 'login',
+                            text: 'تسجيل الدخول',
                             isUpperCase: true,
                             function: () {
                               navigateTo(context, SocialLayout());
@@ -152,9 +152,9 @@ class SocialLoginScrean extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Dont\'t have an account?'),
+                            Text('ليس لديك حساب ?'),
                             defultTextButtton(
-                                text: 'register now',
+                                text: 'انشاء حساب',
                                 function: () {
                                   navigateTo(context, SocialRegisterScrean());
                                 }),

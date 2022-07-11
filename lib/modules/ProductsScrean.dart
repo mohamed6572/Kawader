@@ -1,66 +1,38 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:souq/layout/cubit/cubit.dart';
 import 'package:souq/layout/cubit/states.dart';
+import 'package:souq/shared/components/components.dart';
 
 class ProductsScrean extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SocialCubit, SocialStates>(
-        listener: (context, state) {
-
-        },
-        builder: (context, state) {
-          return
-            productsBuilder(
-           context);
-        });
+    return BlocProvider(
+      create: (context) => SocialCubit()..getSilderImage(),
+      child: BlocConsumer<SocialCubit, SocialStates>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            return productsBuilder(context);
+          }),
+    );
   }
 
-  List<Widget> list = [
-    ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: Image(
-        image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
-        width: double.infinity,
-        fit: BoxFit.fill,
-      ),
-    ),
-    ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: Image(
-        image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
-        width: double.infinity,
-        fit: BoxFit.fill,
-      ),
-    ),
-    ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: Image(
-        image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
-        width: double.infinity,
-        fit: BoxFit.fill,
-      ),
-    ),
-    ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: Image(
-        image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
-        width: double.infinity,
-        fit: BoxFit.fill,
-      ),
-    ),
-
-  ];
-  Widget productsBuilder(context) =>
-      SingleChildScrollView(
+  Widget productsBuilder(context) => SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CarouselSlider(
-                items: list,
+                items: SocialCubit.get(context).slider
+                    .map((e) => ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image(
+                    image: NetworkImage('${e.image}'),
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ))
+                    .toList(),
                 options: CarouselOptions(
                   scrollDirection: Axis.horizontal,
                   autoPlay: true,
@@ -89,9 +61,8 @@ class ProductsScrean extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   Text(
-                    'New adds',
+                    'الاعلانات الجديدة',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
                   ),
                 ],
@@ -110,59 +81,11 @@ class ProductsScrean extends StatelessWidget {
                 mainAxisSpacing: 1.0,
                 crossAxisSpacing: 1.0,
                 childAspectRatio: 1 / 1.43,
-                children: List.generate(list.length,
+                children: List.generate(SocialCubit.get(context).list.length,
                     (index) => BuildGridProduct(context)),
               ),
             )
           ],
         ),
       );
-
-
-
-  Widget BuildGridProduct(context) => Padding(
-    padding: const EdgeInsets.all(2.0),
-    child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Container(
-            color: Colors.white,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image(
-                  image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
-                  width: double.infinity,
-                  height: 200,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'souq',
-                        maxLines: 2,
-                        textAlign:TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 14, height: 1.3),
-                      ),
-                      SizedBox(height: 10,),
-                      Text(
-                        '100',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign:TextAlign.center,
-                        style: TextStyle(fontSize: 12, color: Colors.blue),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-  );
 }
-
-
-

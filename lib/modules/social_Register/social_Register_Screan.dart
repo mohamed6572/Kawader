@@ -56,14 +56,14 @@ class SocialRegisterScrean extends StatelessWidget {
                           height: 30,
                         ),
                         Text(
-                          'Register'.toUpperCase(),
+                          'انشاء مستخدم'.toUpperCase(),
                           style: Theme.of(context)
                               .textTheme
                               .headline4
                               ?.copyWith(color: Colors.black),
                         ),
                         Text(
-                          'Register now to browse our hot offers',
+                          'سجل الان لترى العروض الخاصه بنا',
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1
@@ -75,7 +75,7 @@ class SocialRegisterScrean extends StatelessWidget {
                         defultFormField(
                           type: TextInputType.name,
                           controller: nameController,
-                          label: 'name',
+                          label: 'الاسم',
                           prefix: Icons.person,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -89,7 +89,7 @@ class SocialRegisterScrean extends StatelessWidget {
                         defultFormField(
                           type: TextInputType.phone,
                           controller: phoneController,
-                          label: 'phone',
+                          label: 'رقم الهاتف',
                           prefix: Icons.phone,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -103,7 +103,7 @@ class SocialRegisterScrean extends StatelessWidget {
                         defultFormField(
                             type: TextInputType.visiblePassword,
                             controller: passwordController,
-                            label: 'Password',
+                            label: 'كلمه السر',
                             suffix: SocialRegisterCubit.get(context).suffix,
                             isPassword:
                                 SocialRegisterCubit.get(context).isPassword,
@@ -123,7 +123,7 @@ class SocialRegisterScrean extends StatelessWidget {
                         BuildCondition(
                           condition: state is! SocialRegisterLodingState,
                           builder: (context) => defultButton(
-                            text: 'Register',
+                            text: 'انشاء حساب',
                             isUpperCase: true,
                             function: () {
 

@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:souq/models/add_model.dart';
+import 'package:souq/modules/add_details.dart';
 
 Widget myDivider()=> Padding(
   padding: const EdgeInsetsDirectional.only(
@@ -83,45 +85,245 @@ void navigateToAndFinish(context , widget)=> Navigator.pushAndRemoveUntil(
 
 
 
-Widget BuildGridProduct(context) => Padding(
-  padding: const EdgeInsets.all(2.0),
-  child: ClipRRect(
-    borderRadius: BorderRadius.circular(15),
-    child: Container(
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image(
-            image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdUOaC_-e6JiiolVbgqKoZbWYs8PilfBpaY6JjK_EgIWeiU1cqiPrzptougEotrkR1Yac&usqp=CAU'),
-            width: double.infinity,
-            height: 200,
+Widget BuildGridProduct(context,addModel model) => Material(
+  child:   InkWell(
+    onTap: (){
+      navigateTo(context, add_Details(model: model));
+    },
+    child:   Container(
+
+      width: 200,
+
+      child:   Padding(
+
+
+
+        padding: const EdgeInsets.all(2.0),
+
+
+
+        child: ClipRRect(
+
+
+
+          borderRadius: BorderRadius.circular(15),
+
+
+
+          child: Stack(
+
+
+
+            alignment: AlignmentDirectional.topEnd,
+
+
+
+            children: [
+
+
+
+              Container(
+
+
+
+                color: Colors.white,
+
+
+
+                child: Column(
+
+
+
+                  crossAxisAlignment: CrossAxisAlignment.start,
+
+
+
+                  children: [
+
+
+
+                    if(model.image != '')
+
+
+
+                    Image(
+
+
+
+                      image: NetworkImage('${model.image}'),
+
+
+
+                      width: double.infinity,
+
+
+
+                      height: 190,
+
+
+
+                    ),
+
+
+
+                    Padding(
+
+
+
+                      padding: const EdgeInsets.all(10.0),
+
+
+
+                      child: Column(
+
+
+
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+
+
+
+                        children: [
+
+
+
+                          Text(
+
+
+
+                            '${model.title}',
+
+
+
+                            maxLines: 2,
+
+
+
+                            textAlign:TextAlign.center,
+
+
+
+                            overflow: TextOverflow.ellipsis,
+
+
+
+                            style: TextStyle(fontSize: 14, height: 1.3),
+
+
+
+                          ),
+
+
+
+                          SizedBox(height: 10,),
+
+
+
+                          Text(
+
+
+
+                            '${model.price}',
+
+
+
+                            maxLines: 1,
+
+
+
+                            overflow: TextOverflow.ellipsis,
+
+
+
+                            textAlign:TextAlign.center,
+
+
+
+                            style: TextStyle(fontSize: 12, color: Colors.blue),
+
+
+
+                          ),
+
+
+
+                        ],
+
+
+
+                      ),
+
+
+
+                    )
+
+
+
+                  ],
+
+
+
+                ),
+
+
+
+              ),
+
+
+
+              // if(isUser==true)
+
+
+
+              // MaterialButton(onPressed: (){},
+
+
+
+              //   height: 20,
+
+
+
+              //   padding: EdgeInsets.all(0),
+
+
+
+              //   minWidth: 40,
+
+
+
+              //   elevation: 0.0,
+
+
+
+              //   color: Colors.red,
+
+
+
+              //   child: Icon(Icons.delete),
+
+
+
+              // ),
+
+
+
+
+
+
+
+            ],
+
+
+
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  'souq',
-                  maxLines: 2,
-                  textAlign:TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 14, height: 1.3),
-                ),
-                SizedBox(height: 10,),
-                Text(
-                  '100',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign:TextAlign.center,
-                  style: TextStyle(fontSize: 12, color: Colors.blue),
-                ),
-              ],
-            ),
-          )
-        ],
+
+
+
+        ),
+
+
+
       ),
+
     ),
   ),
 );

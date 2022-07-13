@@ -10,12 +10,12 @@ class Social_Settings extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SocialCubit()..getUserData(),
+      create: (context) =>  SocialCubit()..getUserData()..getofficeposts()..getClientposts(),
       child: BlocConsumer<SocialCubit,SocialStates>(
         listener: (context, state) {},
         builder: (context, state) {
           return BuildCondition(
-            condition: SocialCubit.get(context).userModel!= null ,
+            condition: SocialCubit.get(context).userModel?.name!=null ,
             fallback: (context) => CircularProgressIndicator(),
             builder: (context) => Padding(
               padding: EdgeInsets.all(8),
@@ -45,18 +45,7 @@ class Social_Settings extends StatelessWidget{
                           textAlign: TextAlign.start,
                           style: TextStyle(color: Colors.black),)),
                     SizedBox(height: 20,),
-                    // Row(
-                    //   children: [
-                    //     Expanded(child: OutlinedButton(
-                    //       child: Text('Add Photo'), onPressed: () { },),
-                    //     ),
-                    //     SizedBox(width: 5,),
-                    //     OutlinedButton(
-                    //       child: Icon(Icons.edit,size: 16,), onPressed: () {
-                    //         navigateTo(context, Edit_Profile_Screan());
-                    //     },),
-                    //   ],
-                    // ),
+
                     SizedBox(height: 20,),
                     defultButton(text: 'تسجيل خروج',
                       radius: 20,
@@ -72,6 +61,7 @@ class Social_Settings extends StatelessWidget{
                     ),
                     ),
                     SizedBox(height: 15,),
+                    if(SocialCubit.get(context).postsUser.length>0)
                     Container(
                       padding: EdgeInsetsDirectional.only(top: 3),
                       color: Colors.grey[200],
@@ -81,11 +71,27 @@ class Social_Settings extends StatelessWidget{
                         crossAxisCount: 2,
                         mainAxisSpacing: 1.0,
                         crossAxisSpacing: 1.0,
-                        childAspectRatio: 1 / 1.43,
-                        children: List.generate(SocialCubit.get(context).list.length,
-                                (index) => BuildGridProduct(context)),
+                        childAspectRatio: 1 / 1.5,
+                        children: List.generate(SocialCubit.get(context).postsUser.length,
+                                (index) => BuildGridProduct(context,SocialCubit.get(context).postsUser[index])),
                       ),
-                    )
+                    ),
+                    SizedBox(height: 15,),
+                    if(SocialCubit.get(context).clientsUser.length>0)
+                      Container(
+                        padding: EdgeInsetsDirectional.only(top: 3),
+                        color: Colors.grey[200],
+                        child: GridView.count(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 1.0,
+                          crossAxisSpacing: 1.0,
+                          childAspectRatio: 1 / 1.5,
+                          children: List.generate(SocialCubit.get(context).clientsUser.length,
+                                  (index) => BuildGridProduct(context,SocialCubit.get(context).clientsUser[index])),
+                        ),
+                      )
                   ],
                 ),
               ),

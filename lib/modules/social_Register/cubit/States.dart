@@ -16,9 +16,7 @@ class SocialRegisterErerorState extends SocialRegisterStates {
 class SocialCreateUserLodingState extends SocialRegisterStates {}
 
 class SocialCreateUserSucseslState extends SocialRegisterStates {
-  final String? uId;
 
-  SocialCreateUserSucseslState(this.uId);
 }
 
 class SocialCreateUserErerorState extends SocialRegisterStates {

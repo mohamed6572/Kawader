@@ -24,13 +24,7 @@ class SocialRegisterScrean extends StatelessWidget {
       child: BlocConsumer<SocialRegisterCubit, SocialRegisterStates>(
         listener: (context, state) {
           if(state is SocialCreateUserSucseslState ){
-            casheHelper.SavaData(
-                key: 'uId', value: state.uId
-            )
-                .then((value) {
-
-              navigateToAndFinish(context, SocialLayout());
-            });
+            navigateTo(context, SocialLayout());
           }
         },
         builder: (context, state) {

@@ -56,6 +56,28 @@ class SocialgetPostErrorState extends SocialStates {
 
   SocialgetPostErrorState(this.error);
 }
+///////client
+class SocialCreateclientLoadingState extends SocialStates {}
+class SocialCreateclientSuccsesState extends SocialStates {}
+class SocialCreateclientErrorState extends SocialStates {}
+
+
+class SocialclientImagePickedSuccsessState extends SocialStates {}
+class SocialclientImagePickedErrorState extends SocialStates {}
+
+class SocialRemoveclientImageState extends SocialStates {}
+
+
+class SocialgetclientLoadingState extends SocialStates {}
+
+class SocialgetclientSucsesState extends SocialStates {}
+
+class SocialgetclientErrorState extends SocialStates {
+  final String error;
+
+  SocialgetclientErrorState(this.error);
+}
+
 
 
 

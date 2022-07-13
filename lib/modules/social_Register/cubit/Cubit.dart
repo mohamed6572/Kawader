@@ -47,7 +47,7 @@ class SocialRegisterCubit extends Cubit<SocialRegisterStates> {
         .doc(uId)
         .set(model.toJson())
         .then((value) {
-          emit(SocialCreateUserSucseslState(uId));
+          emit(SocialCreateUserSucseslState());
     })
         .catchError((error) {
           emit(SocialCreateUserErerorState(error.toString()));

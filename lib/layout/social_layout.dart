@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:souq/layout/cubit/cubit.dart';
 import 'package:souq/layout/cubit/states.dart';
-import 'package:souq/modules/NewPost.dart';
+import 'package:souq/modules/New_Post_office_Screan.dart';
+import 'package:souq/modules/chosePosts.dart';
 import 'package:souq/shared/components/components.dart';
 
 class SocialLayout extends StatelessWidget {
@@ -14,7 +15,7 @@ class SocialLayout extends StatelessWidget {
       child: BlocConsumer<SocialCubit, SocialStates>(
         listener: (context, state) {
           if(state is SocialNewPostState){
-            navigateTo(context, New_Post_Screan());
+            navigateTo(context, ChosePosts());
           }
         },
         builder: (context, state) {
